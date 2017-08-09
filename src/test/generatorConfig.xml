@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+		location="D:\omni\omniv4\omni\WebContent\WEB-INF\lib\mysql-connector-java-5.1.38.jar" />
+	<context id="omniTables">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/casdemo" userId="root"
+			password="P@55w0rd" />
+		<javaModelGenerator targetPackage="com.next.cas.db.model"
+			targetProject="cas-sso/src/main/java/" />
+		<sqlMapGenerator targetPackage="com.next.cas.db.mapper"
+			targetProject="cas-sso/src/main/java/" />
+		<javaClientGenerator targetPackage="com.next.cas.db.mapper"
+			targetProject="cas-sso/src/main/java/" type="XMLMAPPER" />
+
+
+		<table schema="casdemo" tableName="user" domainObjectName="User">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+
+	</context>
+</generatorConfiguration>

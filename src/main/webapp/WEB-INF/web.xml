@@ -33,6 +33,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
+			/WEB-INF/spring/appContext.xml
             /WEB-INF/spring-configuration/*.xml
             /WEB-INF/deployerConfigContext.xml
             <!-- this enables extensions and addons to contribute to overall CAS' application context
@@ -260,7 +261,10 @@
         <servlet-name>cas</servlet-name>
         <url-pattern>/v1/*</url-pattern>
     </servlet-mapping>
-
+<servlet-mapping>
+  <servlet-name>cas</servlet-name>
+  <url-pattern>/oauth2.0/*</url-pattern>
+</servlet-mapping>
     <!--
     <servlet-mapping>
         <servlet-name>cas</servlet-name>

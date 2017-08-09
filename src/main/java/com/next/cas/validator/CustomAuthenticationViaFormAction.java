@@ -49,6 +49,9 @@ public class CustomAuthenticationViaFormAction extends AuthenticationViaFormActi
         messageContext.addMessage(new MessageBuilder().error().code("login.captcha.error").build());
 
         return new Event(this, ERROR);
+        
+        
     }
 
+    
 }

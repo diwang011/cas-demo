@@ -111,46 +111,9 @@
 <!--         </property> -->
 <!--     </bean> -->
 
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"  
-        init-method="init" destroy-method="close">  
-        <property name="url" value="${a_jdbc.url}" />  
-        <property name="username" value="${a_jdbc.username}" />  
-        <property name="password" value="${a_jdbc.password}" />  
-        <property name="driverClassName" value="${a_jdbc.driver}" />  
-  
-        <!-- 配置初始化大小、最小、最大 -->  
-        <property name="initialSize" value="${a_jdbc.pool.minIdle}" />  
-        <property name="minIdle" value="${a_jdbc.pool.minIdle}" />  
-        <property name="maxActive" value="${a_jdbc.pool.maxActive}" />  
-  
-        <!-- 配置获取连接等待超时的时间 -->  
-        <property name="maxWait" value="${a_jdbc.pool.maxWait}" />  
-  
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->  
-        <property name="timeBetweenEvictionRunsMillis" value="${a_timeBetweenEvictionRunsMillis}" />  
-  
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->  
-        <property name="minEvictableIdleTimeMillis" value="${a_minEvictableIdleTimeMillis}" />  
-  
-        <property name="validationQuery" value="SELECT 'x' FROM DUAL" />  
-        <property name="testWhileIdle" value="true" />  
-        <property name="testOnBorrow" value="false" />  
-        <property name="testOnReturn" value="false" />  
-  
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小（Oracle使用） -->  
-        <!-- <property name="poolPreparedStatements" value="true" /> <property   
-            name="maxPoolPreparedStatementPerConnectionSize" value="20" /> -->  
-        <!-- removeAbandoned功能自动检测连接打开超过指定时间未被使用自动关闭 时间单位为秒，logAbandoned设置关闭是否输出日志 -->  
-        <!-- <property name="removeAbandoned" value="false" /> <property name="removeAbandonedTimeout"   
-            value="1800" /> <property name="logAbandoned" value="true" /> -->  
-        <!-- 配置监控统计拦截的filters -->  
-        <property name="filters" value="stat" />  
-    </bean>  
-    
-	<bean id="primaryAuthenticationHandler"
-		class="com.next.cas.CustomAuthenticationHandler"
-		 />
-    
+	<bean id="primaryAuthenticationHandler" class="com.next.cas.CustomAuthenticationHandler">
+        <property name="userService" ref="userService"></property>
+    </bean>
     
     <!-- Required for proxy ticket mechanism -->
     <bean id="proxyPrincipalResolver"

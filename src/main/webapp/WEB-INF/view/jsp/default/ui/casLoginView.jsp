@@ -20,12 +20,12 @@
 --%>
 <jsp:directive.include file="includes/top.jsp" />
 
-<c:if test="${not pageContext.request.secure}">
-    <div id="msg" class="errors">
-        <h2><spring:message code="screen.nonsecure.title" /></h2>
-        <p><spring:message code="screen.nonsecure.message" /></p>
-    </div>
-</c:if>
+<%-- <c:if test="${not pageContext.request.secure}"> --%>
+<!--     <div id="msg" class="errors"> -->
+<%--         <h2><spring:message code="screen.nonsecure.title" /></h2> --%>
+<%--         <p><spring:message code="screen.nonsecure.message" /></p> --%>
+<!--     </div> -->
+<%-- </c:if> --%>
 
 <div id="cookiesDisabled" class="errors" style="display:none;">
     <h2><spring:message code="screen.cookies.disabled.title" /></h2>
@@ -113,8 +113,10 @@
             </p>
         </section>
         -->
-<!-- 		<input id="captcha" type="text" name="captcha" placeholder="请输入验证码"/>   -->
-<!-- 		<img class="security-code-img" src="kaptcha.jpg" >   -->
+        <c:if test="${sessionScope.LOGIN_FIRST == 'NOTFIRST'}"> 
+		<input id="captcha" type="text" name="captcha" placeholder="please enter verification code"/>  
+		<img class="security-code-img" src="kaptcha.jpg" >  
+		</c:if>  
         <section class="row btn-row">
             <input type="hidden" name="lt" value="${loginTicket}" />
             <input type="hidden" name="execution" value="${flowExecutionKey}" />
