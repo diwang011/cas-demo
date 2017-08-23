@@ -51,17 +51,17 @@
         </c:when>
     </c:choose>
 
-    <div id="serviceui" class="serviceinfo">
-        <table>
-            <tr>
-                <td><img src="${registeredServiceLogo}"></td>
-                <td id="servicedesc">
-                    <h1>${fn:escapeXml(registeredServiceName)}</h1>
-                    <p>${fn:escapeXml(registeredServiceDescription)}</p>
-                </td>
-            </tr>
-        </table>
-    </div>
+<!--     <div id="serviceui" class="serviceinfo"> -->
+<!--         <table> -->
+<!--             <tr> -->
+<%--                 <td><img src="${registeredServiceLogo}"></td> --%>
+<!--                 <td id="servicedesc"> -->
+<%--                     <h1>${fn:escapeXml(registeredServiceName)}</h1> --%>
+<%--                     <p>${fn:escapeXml(registeredServiceDescription)}</p> --%>
+<!--                 </td> -->
+<!--             </tr> -->
+<!--         </table> -->
+<!--     </div> -->
     <p/>
 </c:if>
 
@@ -113,24 +113,9 @@
             </p>
         </section>
         -->
-        <c:if test="${sessionScope.LOGIN_FIRST == 'NOTFIRST'}"> 
-		<input id="captcha" type="text" name="captcha" placeholder="please enter verification code"/>  
-		<img class="security-code-img" src="kaptcha.jpg" >  
-		</c:if>  
-        <section class="row btn-row">
-            <input type="hidden" name="lt" value="${loginTicket}" />
-            <input type="hidden" name="execution" value="${flowExecutionKey}" />
-            <input type="hidden" name="_eventId" value="submit" />
-
-            <input class="btn-submit" name="submit" accesskey="l" value="<spring:message code="screen.welcome.button.login" />" tabindex="6" type="submit" />
-            <input class="btn-reset" name="reset" accesskey="c" value="<spring:message code="screen.welcome.button.clear" />" tabindex="7" type="reset" />
-        </section>
-    </form:form>
-</div>
-
-<div id="sidebar">
+        <div id="sidebar">
     <div class="sidebar-content">
-        <p><spring:message code="screen.welcome.security" /></p>
+<%--         <p><spring:message code="screen.welcome.security" /></p> --%>
 
         <div id="list-languages">
             <%final String queryString = request.getQueryString() == null ? "" : request.getQueryString().replaceAll("&locale=([A-Za-z][A-Za-z]_)?[A-Za-z][A-Za-z]|^locale=([A-Za-z][A-Za-z]_)?[A-Za-z][A-Za-z]", "");%>
@@ -202,5 +187,21 @@
         </div>
     </div>
 </div>
+        <c:if test="${sessionScope.LOGIN_FIRST == 'NOTFIRST'}"> 
+		<input id="captcha" type="text" name="captcha" placeholder="please enter verification code"/>  
+		<img class="security-code-img" src="kaptcha.jpg" >  
+		</c:if>  
+        <section class="row btn-row">
+            <input type="hidden" name="lt" value="${loginTicket}" />
+            <input type="hidden" name="execution" value="${flowExecutionKey}" />
+            <input type="hidden" name="_eventId" value="submit" />
 
-<jsp:directive.include file="includes/bottom.jsp" />
+            <input class="btn-submit" name="submit" accesskey="l" value="<spring:message code="screen.welcome.button.login" />" tabindex="6" type="submit" />
+            <input class="btn-reset" name="reset" accesskey="c" value="<spring:message code="screen.welcome.button.clear" />" tabindex="7" type="reset" />
+        </section>
+    </form:form>
+</div>
+
+
+
+<%-- <jsp:directive.include file="includes/bottom.jsp" /> --%>

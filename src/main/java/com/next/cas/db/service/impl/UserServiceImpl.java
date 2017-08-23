@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService
     public User query(String username)
     {
         UserExample example = new UserExample();
-        example.createCriteria().andLoginnameEqualTo(username);
+        example.createCriteria().andNameEqualTo(username);
         System.out.println(userMapper);
         List<User> list = userMapper.selectByExample(example);
         return (list != null && list.size() > 0) ? list.get(0) : null;
